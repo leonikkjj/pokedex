@@ -5,7 +5,7 @@ export const PokemonContext = createContext({});
 
 export function PokemonProvider({ children }) {
   const [pokemons, setPokemons] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [shinyMode, setShinyMode] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(30);
@@ -25,7 +25,9 @@ export function PokemonProvider({ children }) {
       } catch (error) {
         console.error(error);
       } finally {
-        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+        }, 300);
       }
     };
     getPokemon();
