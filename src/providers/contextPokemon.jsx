@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const PokemonContext = createContext({});
 
-export const PokemonProvider = ({ children }) => {
+export function PokemonProvider({ children }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [shinyMode, setShinyMode] = useState(false);
@@ -13,7 +13,7 @@ export const PokemonProvider = ({ children }) => {
   useEffect(() => {
     const getPokemon = async () => {
       let endPoints = [];
-      for (let x = 1; x < 1000; x++) {
+      for (let x = 1; x < 1011; x++) {
         endPoints.push(`https://pokeapi.co/api/v2/pokemon/${x}/`);
       }
       try {
@@ -53,4 +53,4 @@ export const PokemonProvider = ({ children }) => {
       </PokemonContext.Provider>
     </>
   );
-};
+}

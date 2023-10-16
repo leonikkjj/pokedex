@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import { PokemonCard } from "../pokemonCard";
-import { PokemonContext } from "../../providers/contextPokemon";
+import { usePokemon } from "../../hooks/usePokemon";
 
-export const Main = () => {
-  const { pokemons, loading, setLoading, currentPost } =
-    useContext(PokemonContext);
+export function Main() {
+  const { pokemons, loading, setLoading, currentPost } = usePokemon();
 
   return (
     <>
@@ -23,4 +21,4 @@ export const Main = () => {
       </main>
     </>
   );
-};
+}

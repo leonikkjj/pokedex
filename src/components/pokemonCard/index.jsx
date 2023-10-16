@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { PokemonContext } from "../../providers/contextPokemon";
+import { usePokemon } from "../../hooks/usePokemon";
 
-export const PokemonCard = ({ pokemon }) => {
-  const { shinyMode, setShinyMode } = useContext(PokemonContext);
-  console.log(pokemon);
+export function PokemonCard({ pokemon }) {
+  const { shinyMode, setShinyMode } = usePokemon();
+
   return (
     <>
-      <li className="flex border border-solid border-1 bg-back transition duration-300 hover:border-red-500 ">
+      <li className="flex rounded border border-solid border-1 bg-back transition duration-300 hover:border-red-500 ">
         <section className="flex flex-col items-center">
           <img
-            className="bg-gray-100 w-44 h-44"
+            className="bg-gray-100 rounded  w-44 h-44"
             src={
               shinyMode
                 ? pokemon.data.sprites.front_shiny
@@ -24,4 +23,4 @@ export const PokemonCard = ({ pokemon }) => {
       </li>
     </>
   );
-};
+}

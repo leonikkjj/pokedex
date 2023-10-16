@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { PokemonContext } from "../../providers/contextPokemon";
+import { usePokemon } from "../../hooks/usePokemon";
 
-export const Pagination = () => {
-  const { pokemons, postPerPage, setCurrentPage } = useContext(PokemonContext);
+export function Pagination() {
+  const { pokemons, postPerPage, setCurrentPage } = usePokemon();
   const totalPost = pokemons.length;
 
   let pages = [];
@@ -28,4 +27,4 @@ export const Pagination = () => {
       </div>
     </>
   );
-};
+}
