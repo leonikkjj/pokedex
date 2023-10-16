@@ -2,7 +2,7 @@ import { PokemonCard } from "../pokemonCard";
 import { usePokemon } from "../../hooks/usePokemon";
 
 export function Main() {
-  const { pokemons, loading, setLoading, currentPost } = usePokemon();
+  const { pokemons, loading, setLoading, currentItems } = usePokemon();
 
   return (
     <>
@@ -13,7 +13,7 @@ export function Main() {
               <p className="text-4xl">Carregando...</p>
             </div>
           ) : (
-            currentPost.map((pokemon) => (
+            currentItems.map((pokemon) => (
               <PokemonCard pokemon={pokemon} key={pokemon.data.name} />
             ))
           )}

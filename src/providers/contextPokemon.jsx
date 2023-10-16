@@ -9,6 +9,7 @@ export function PokemonProvider({ children }) {
   const [shinyMode, setShinyMode] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(30);
+  const [itemOffset, setItemOffset] = useState(0);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -30,9 +31,14 @@ export function PokemonProvider({ children }) {
     getPokemon();
   }, []);
 
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
-  const currentPost = pokemons.slice(firstPostIndex, lastPostIndex);
+  const endOffset = itemOffset + postPerPage;
+  const currentItems = pokemons.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(pokemons.length / postPerPage);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * postPerPage) % pokemons.length;
+    setItemOffset(newOffset);
+  };
 
   return (
     <>
@@ -42,11 +48,13 @@ export function PokemonProvider({ children }) {
           setPokemons,
           loading,
           setLoading,
-          currentPost,
           postPerPage,
           setCurrentPage,
           shinyMode,
           setShinyMode,
+          handlePageClick,
+          pageCount,
+          currentItems,
         }}
       >
         {children}

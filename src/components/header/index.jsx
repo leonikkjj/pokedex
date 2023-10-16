@@ -23,10 +23,10 @@ export function Header() {
             className="h-10 w-60 sm:mr-6 pl-2 rounded outline-none"
           />
           <button
-            className="border rounded border-solid sm:mr-6 border-1 bg-white transition duration-300 hover:border-red-500"
+            className="border rounded border-solid sm:mr-6 border-1 h-8 bg-white  transition duration-300 hover:border-red-500"
             onClick={handleShiny}
           >
-            modo Shiny
+            Modo Shiny
           </button>
         </div>
       </header>
