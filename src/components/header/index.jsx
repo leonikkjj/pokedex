@@ -2,7 +2,7 @@ import poke from "../../assets/poke.png";
 import { usePokemon } from "../../hooks/usePokemon";
 
 export function Header() {
-  const { shinyMode, setShinyMode } = usePokemon();
+  const { shinyMode, setShinyMode, inputSearch, setInputSearch } = usePokemon();
 
   const handleShiny = () => {
     setShinyMode(shinyMode == false ? true : false);
@@ -19,6 +19,8 @@ export function Header() {
         <div className="flex flex-col gap-2">
           <input
             type="text"
+            value={inputSearch}
+            onChange={(event) => setInputSearch(event.target.value)}
             placeholder="Procure seu pokemon aqui..."
             className="h-10 w-60 sm:mr-6 pl-2 rounded outline-none"
           />

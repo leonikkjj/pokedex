@@ -10,6 +10,7 @@ export function PokemonProvider({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(30);
   const [itemOffset, setItemOffset] = useState(0);
+  const [inputSearch, setInputSearch] = useState("");
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -33,8 +34,14 @@ export function PokemonProvider({ children }) {
     getPokemon();
   }, []);
 
+  console.log(pokemons);
+
+  const filterPokemons = pokemons.filter((pokemon) =>
+    pokemon.data.name.toLowerCase().includes(inputSearch.toLowerCase())
+  );
+
   const endOffset = itemOffset + postPerPage;
-  const currentItems = pokemons.slice(itemOffset, endOffset);
+  const currentItems = filterPokemons.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(pokemons.length / postPerPage);
 
   const handlePageClick = (event) => {
@@ -57,6 +64,9 @@ export function PokemonProvider({ children }) {
           handlePageClick,
           pageCount,
           currentItems,
+          inputSearch,
+          setInputSearch,
+          filterPokemons,
         }}
       >
         {children}

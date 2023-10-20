@@ -13,6 +13,9 @@ export default {
         "brand-1": "#ee1515",
         "brand-white": "#f0f0f0",
       },
+      colors: {
+        "custom-color": "#ee1515", // Substitua com sua cor personalizada
+      },
     },
   },
   plugins: [],

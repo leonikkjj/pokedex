@@ -8,11 +8,11 @@ export function PaginatedItems({ itemsPerPage }) {
     <>
       <Main />
       <ReactPaginate
-        className="flex justify-center gap-7 mb-14 text-xl "
+        className="flex justify-center gap-7 mb-14 text-xl flex-wrap "
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={1}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
